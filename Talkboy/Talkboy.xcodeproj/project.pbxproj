@@ -13,7 +13,7 @@
 		812366ED1FC90502007ABC3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 812366EC1FC90502007ABC3D /* Assets.xcassets */; };
 		812366F01FC90502007ABC3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 812366EE1FC90502007ABC3D /* LaunchScreen.storyboard */; };
 		812366F81FC94B81007ABC3D /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812366F71FC94B81007ABC3D /* MainTableViewController.swift */; };
-		812366FC1FC959C4007ABC3D /* VoicesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812366FB1FC959C4007ABC3D /* VoicesTableViewController.swift */; };
+		812366FE1FC95C1C007ABC3D /* AddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812366FD1FC95C1C007ABC3D /* AddEditViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		812366EF1FC90502007ABC3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		812366F11FC90502007ABC3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		812366F71FC94B81007ABC3D /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
-		812366FB1FC959C4007ABC3D /* VoicesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicesTableViewController.swift; sourceTree = "<group>"; };
+		812366FD1FC95C1C007ABC3D /* AddEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +72,7 @@
 			children = (
 				812366E21FC90502007ABC3D /* AppDelegate.swift */,
 				812366F71FC94B81007ABC3D /* MainTableViewController.swift */,
-				812366FB1FC959C4007ABC3D /* VoicesTableViewController.swift */,
+				812366FD1FC95C1C007ABC3D /* AddEditViewController.swift */,
 			);
 			path = swift;
 			sourceTree = "<group>";
@@ -158,9 +158,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				812366FE1FC95C1C007ABC3D /* AddEditViewController.swift in Sources */,
 				812366EB1FC90502007ABC3D /* Talkboy.xcdatamodeld in Sources */,
 				812366F81FC94B81007ABC3D /* MainTableViewController.swift in Sources */,
-				812366FC1FC959C4007ABC3D /* VoicesTableViewController.swift in Sources */,
 				812366E31FC90502007ABC3D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
