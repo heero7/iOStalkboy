@@ -9,6 +9,9 @@
 import UIKit
 
 class AddEditViewController: UIViewController {
+    
+    @IBOutlet weak var soundNameTextField: UITextField!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +24,21 @@ class AddEditViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //MARK: Button functions
+    @IBAction func recordSound(_ sender: Any) {
+    }
+    
+    @IBAction func playSound(_ sender: Any) {
+    }
+    
     //MARK: Bar Button Navigation
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func saveSound(_ sender: UIBarButtonItem) {
+        
+    }
     
 
     /*

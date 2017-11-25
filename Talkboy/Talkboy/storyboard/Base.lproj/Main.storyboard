@@ -54,7 +54,39 @@
                     <view key="view" contentMode="scaleToFill" id="6z9-fA-YLl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHo-bb-Gn1">
+                                <rect key="frame" x="162.5" y="94" width="49" height="30"/>
+                                <state key="normal" title="Record"/>
+                                <connections>
+                                    <action selector="recordSound:" destination="jpn-Xd-ZfS" eventType="touchUpInside" id="acH-0E-aNi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aE-Os-XVV">
+                                <rect key="frame" x="173" y="132" width="30" height="30"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="playSound:" destination="jpn-Xd-ZfS" eventType="touchUpInside" id="kTW-xg-gyN"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sound Name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OVh-nO-KGN">
+                                <rect key="frame" x="20" y="170" width="335" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7aE-Os-XVV" firstAttribute="top" secondItem="UHo-bb-Gn1" secondAttribute="bottom" constant="8" id="G06-vC-wtc"/>
+                            <constraint firstItem="OVh-nO-KGN" firstAttribute="top" secondItem="7aE-Os-XVV" secondAttribute="bottom" constant="8" id="OaA-pj-8Jp"/>
+                            <constraint firstItem="7aE-Os-XVV" firstAttribute="centerX" secondItem="6z9-fA-YLl" secondAttribute="centerX" id="bbB-8O-KU4"/>
+                            <constraint firstItem="OVh-nO-KGN" firstAttribute="leading" secondItem="sr2-EK-vwf" secondAttribute="leading" constant="20" id="jex-eC-xLg"/>
+                            <constraint firstItem="OVh-nO-KGN" firstAttribute="centerX" secondItem="6z9-fA-YLl" secondAttribute="centerX" id="mr3-QE-3AR"/>
+                            <constraint firstItem="UHo-bb-Gn1" firstAttribute="top" secondItem="sr2-EK-vwf" secondAttribute="top" constant="30" id="o6E-Qw-jYI"/>
+                            <constraint firstItem="sr2-EK-vwf" firstAttribute="trailing" secondItem="OVh-nO-KGN" secondAttribute="trailing" constant="20" id="yNu-oy-PCq"/>
+                            <constraint firstItem="UHo-bb-Gn1" firstAttribute="centerX" secondItem="6z9-fA-YLl" secondAttribute="centerX" id="zpd-ua-jsx"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="sr2-EK-vwf"/>
                     </view>
                     <navigationItem key="navigationItem" id="G8z-dB-uR1">
@@ -63,8 +95,15 @@
                                 <action selector="cancel:" destination="jpn-Xd-ZfS" id="6J7-ur-yOr"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="YDL-BT-boa"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="YDL-BT-boa">
+                            <connections>
+                                <action selector="saveSound:" destination="jpn-Xd-ZfS" id="03k-lE-UMB"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="soundNameTextField" destination="OVh-nO-KGN" id="7g1-kq-oUa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MoL-I8-m5Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
