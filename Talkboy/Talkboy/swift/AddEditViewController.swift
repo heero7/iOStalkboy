@@ -7,25 +7,58 @@
 //
 
 import UIKit
+import AVFoundation
 
 class AddEditViewController: UIViewController {
     
     @IBOutlet weak var soundNameTextField: UITextField!
+    @IBOutlet weak var recordAndStopButton: UIButton!
+    
+    var audioRecorder : AVAudioRecorder?
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        // create audio session
+        let currentSession = AVAudioSession.sharedInstance()
+        
+        try? currentSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+        try? currentSession.overrideOutputAudioPort(.speaker)
+        try? currentSession.setActive(true)
+        
+        // url to save the audio
+        
+        if let basePath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
+            let pathComponenents = [basePath, "audio.m4a"]
+            if let audioURL = NSURL.fileURL(withPathComponents: pathComponenents) {
+                // create some settings
+                var settings : [String:Any] = [:]
+                settings[AVFormatIDKey]  = Int(kAudioFormatMPEG4AAC)
+                settings[AVSampleRateKey] = 44100.0
+                settings[AVNumberOfChannelsKey] = 2
+                // create the audio recorder
+                
+                try? audioRecorder = AVAudioRecorder(url: audioURL, settings: settings)
+                audioRecorder?.prepareToRecord()
+            }
+        }
+        
+        
+        
     }
     
     //MARK: Button functions
     @IBAction func recordSound(_ sender: Any) {
+        if let audioRecorder = self.audioRecorder {
+            if audioRecorder.isRecording {
+                recordAndStopButton.setTitle("Stop", for: .normal)
+                audioRecorder.stop()
+            } else {
+                recordAndStopButton.setTitle("Record", for: .normal)
+                audioRecorder.record()
+            }
+        }
     }
     
     @IBAction func playSound(_ sender: Any) {
@@ -39,16 +72,4 @@ class AddEditViewController: UIViewController {
     @IBAction func saveSound(_ sender: UIBarButtonItem) {
         
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
