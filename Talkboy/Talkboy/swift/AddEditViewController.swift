@@ -14,7 +14,9 @@ class AddEditViewController: UIViewController {
     @IBOutlet weak var soundNameTextField: UITextField!
     @IBOutlet weak var recordAndStopButton: UIButton!
     
+    var audioURL : URL?
     var audioRecorder : AVAudioRecorder?
+    var audioPlayer : AVAudioPlayer?
     
 
     override func viewDidLoad() {
@@ -33,6 +35,7 @@ class AddEditViewController: UIViewController {
             let pathComponenents = [basePath, "audio.m4a"]
             if let audioURL = NSURL.fileURL(withPathComponents: pathComponenents) {
                 // create some settings
+                self.audioURL = audioURL
                 var settings : [String:Any] = [:]
                 settings[AVFormatIDKey]  = Int(kAudioFormatMPEG4AAC)
                 settings[AVSampleRateKey] = 44100.0
@@ -52,16 +55,20 @@ class AddEditViewController: UIViewController {
     @IBAction func recordSound(_ sender: Any) {
         if let audioRecorder = self.audioRecorder {
             if audioRecorder.isRecording {
-                recordAndStopButton.setTitle("Stop", for: .normal)
                 audioRecorder.stop()
-            } else {
                 recordAndStopButton.setTitle("Record", for: .normal)
+            } else {
                 audioRecorder.record()
+                recordAndStopButton.setTitle("Stop", for: .normal)
             }
         }
     }
     
     @IBAction func playSound(_ sender: Any) {
+        if let audioURL = self.audioURL {
+            audioPlayer = try? AVAudioPlayer(contentsOf: audioURL)
+            audioPlayer?.play()
+        }
     }
     
     //MARK: Bar Button Navigation
