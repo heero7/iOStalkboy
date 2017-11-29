@@ -13,6 +13,8 @@ class AddEditViewController: UIViewController {
     
     @IBOutlet weak var soundNameTextField: UITextField!
     @IBOutlet weak var recordAndStopButton: UIButton!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var audioURL : URL?
     var audioRecorder : AVAudioRecorder?
@@ -47,8 +49,13 @@ class AddEditViewController: UIViewController {
             }
         }
         
-        
-        
+       enableButtons(onOff: false)
+    }
+    
+    private func enableButtons(onOff: Bool) {
+        playButton.isEnabled = onOff
+        soundNameTextField.isEnabled = onOff
+        saveButton.isEnabled = onOff
     }
     
     //MARK: Button functions
@@ -57,9 +64,11 @@ class AddEditViewController: UIViewController {
             if audioRecorder.isRecording {
                 audioRecorder.stop()
                 recordAndStopButton.setTitle("Record", for: .normal)
+                enableButtons(onOff: true)
             } else {
                 audioRecorder.record()
                 recordAndStopButton.setTitle("Stop", for: .normal)
+                enableButtons(onOff: false)
             }
         }
     }
@@ -77,6 +86,15 @@ class AddEditViewController: UIViewController {
     }
     
     @IBAction func saveSound(_ sender: UIBarButtonItem) {
-        
+        if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
+            
+            let sound =  Sound(entity: Sound.entity(), insertInto: context)
+            sound.name = soundNameTextField.text
+            if let audioURL = self.audioURL {
+                sound.audioData = try? Data(contentsOf: audioURL)
+                try? context.save()
+                navigationController?.popViewController(animated: true)
+            }
+        }
     }
 }

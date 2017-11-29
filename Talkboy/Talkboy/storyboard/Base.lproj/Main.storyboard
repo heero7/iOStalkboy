@@ -102,7 +102,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="playButton" destination="7aE-Os-XVV" id="9VY-oS-1BK"/>
                         <outlet property="recordAndStopButton" destination="UHo-bb-Gn1" id="ruF-gb-zp5"/>
+                        <outlet property="saveButton" destination="YDL-BT-boa" id="VXN-Cg-dVY"/>
                         <outlet property="soundNameTextField" destination="OVh-nO-KGN" id="7g1-kq-oUa"/>
                     </connections>
                 </viewController>
