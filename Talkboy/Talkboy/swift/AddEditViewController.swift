@@ -13,8 +13,9 @@ class AddEditViewController: UIViewController {
     
     @IBOutlet weak var soundNameTextField: UITextField!
     @IBOutlet weak var recordAndStopButton: UIButton!
+    @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
     
     var audioURL : URL?
     var audioRecorder : AVAudioRecorder?
@@ -55,7 +56,7 @@ class AddEditViewController: UIViewController {
     private func enableButtons(onOff: Bool) {
         playButton.isEnabled = onOff
         soundNameTextField.isEnabled = onOff
-        saveButton.isEnabled = onOff
+        addButton.isEnabled = onOff
     }
     
     //MARK: Button functions
@@ -80,12 +81,11 @@ class AddEditViewController: UIViewController {
         }
     }
     
-    //MARK: Bar Button Navigation
-    @IBAction func cancel(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
-    }
+   
+
     
-    @IBAction func saveSound(_ sender: UIBarButtonItem) {
+   
+    @IBAction func addTapped(_ sender: Any) {
         if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
             
             let sound =  Sound(entity: Sound.entity(), insertInto: context)
